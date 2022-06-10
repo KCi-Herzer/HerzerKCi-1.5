@@ -1,4 +1,5 @@
 #include "mainFrame.h"
+#include <string>
 
 wxBEGIN_EVENT_TABLE(mainFrame, wxFrame)
 //
@@ -6,14 +7,23 @@ wxEND_EVENT_TABLE()
 
 mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 240), wxSize(540, 495))
 {
-	textBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(wxDefaultPosition), wxSize(560, 90), wxTE_READONLY);	//
+#pragma region TEXT BOX
+	textBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(wxDefaultPosition), wxSize(560, 90), wxTE_READONLY);
 	textBox->SetAutoLayout(true);
-	/*wxFo
-	textBox->SetFont*/
+	wxFont font(48, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
+	textBox->SetFont(font);
+	//TODO: Make text size dinamic based on how much text is in the box
+	//TODO: Make text align to the right of the box
+#pragma endregion
+
+#pragma region Other Initializations
 	calcButtons = new wxButton * [buttonsX * buttonsY];
 	wxGridSizer* buttonSizer = new wxGridSizer(buttonsX, buttonsY, 0, 0);
 	wxFlexGridSizer* calcSizer = new wxFlexGridSizer(1);
-	
+#pragma endregion
+
+#pragma region Buttons
+	//Nested for loops to create the buttons
 	for (int x = 0; x < buttonsX; x++)
 	{
 		for (int y = 0; y < buttonsY; y++)
@@ -22,14 +32,32 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 			buttonSizer->Add(calcButtons[y * buttonsX + x], 1, wxEXPAND | wxALL);
 		}
 	}
-	/*this->SetSizer(buttonSizer);
-	buttonSizer->Layout();*/
+
+	//Disableing unneeded buttons
+	calcButtons[3]->Disable();
+	calcButtons[11]->Disable();
+	calcButtons[22]->Disable();
+
+	//Assigning lables to buttons
+	std::vector <std::string> lables = { "7", "4", "1", "", "8", "5", "2", "0", "9", "6", "3", "", 
+		"C", "-/+", "*", "/", "mod", "hex", "+", "-", "bin", "dec",  "", "=" };
+	for (int i = 0; i < 24; i++)
+	{
+		calcButtons[i]->SetLabel(lables[i]);
+	}
+
+	//TODO: Make lable size dinamic based on how much text is in the box
+
+#pragma endregion
+
+#pragma region Sizers
 	calcSizer->AddGrowableCol(0);
 	calcSizer->AddGrowableRow(1);
 	calcSizer->Add(textBox, 1, wxEXPAND | wxALL);
 	calcSizer->Add(buttonSizer, 1, wxEXPAND | wxALL);
 	this->SetSizer(calcSizer);
 	calcSizer->Layout();
+#pragma endregion
 }
 
 mainFrame::~mainFrame()
