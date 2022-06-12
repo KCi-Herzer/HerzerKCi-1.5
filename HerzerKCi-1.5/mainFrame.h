@@ -11,9 +11,8 @@ public:
 	wxButton** calcButtons;
 	int buttonsX = 4;
 	int buttonsY = 6;
-	std::string calcText = "0";
+	std::string calcText = "";
 	
 	void OnButtonClicked(wxCommandEvent & click);
 
-	wxDECLARE_EVENT_TABLE();
 };
