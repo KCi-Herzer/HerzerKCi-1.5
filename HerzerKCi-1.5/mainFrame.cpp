@@ -14,6 +14,7 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 #pragma endregion
 
 	ButtonFactory* buttonFactory = new ButtonFactory();
+	buttonFactory->CreateButtons(this);
 
 #pragma region Sizers
 	wxFlexGridSizer* calcSizer = new wxFlexGridSizer(1);

@@ -1,5 +1,6 @@
 #pragma once
 #include "wx/wx.h"
+#include "mainFrame.h"
 
 class ButtonFactory
 {
@@ -11,7 +12,7 @@ public:
 
 	ButtonFactory();
 	~ButtonFactory();
-	void CreateButtons();
+	void CreateButtons(mainFrame* _parent);
 
 	
 };
