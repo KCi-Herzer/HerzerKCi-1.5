@@ -1,17 +1,18 @@
 #pragma once
+#include "wx/wx.h"
 
 class ButtonFactory
 {
 public:
+	wxButton** calcButtons;
+	wxGridSizer* buttonSizer;
+	int buttonSizerRows = 4;
+	int buttonSizerCols = 6;
+
 	ButtonFactory();
 	~ButtonFactory();
+	void CreateButtons();
 
-	void CreateButton();
-	//My approach to making the button factory
-	//Have mainFrame call it with parameters like
-	//What button ie(1-9,or the operators)
-	//Have it pass in the parent frame
-	// optional: Enabled? default as true
-	//jk
+	
 };
 
