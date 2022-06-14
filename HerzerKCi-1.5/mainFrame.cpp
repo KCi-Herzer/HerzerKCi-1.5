@@ -1,14 +1,10 @@
 #include "mainFrame.h"
 #include <string>
 
-wxBEGIN_EVENT_TABLE(mainFrame, wxFrame)
-//
-wxEND_EVENT_TABLE()
-
 mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 240), wxSize(540, 495))
 {
 #pragma region TEXT BOX
-	textBox = new wxTextCtrl(this, wxID_ANY, "0", wxPoint(wxDefaultPosition), wxSize(560, 90), wxTE_READONLY);
+	textBox = new wxTextCtrl(this, wxID_ANY, "", wxPoint(wxDefaultPosition), wxSize(560, 90), wxTE_READONLY);
 	textBox->SetAutoLayout(true);
 	wxFont font(48, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
 	textBox->SetFont(font);
@@ -30,6 +26,9 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 		{
 			calcButtons[y * buttonsX + x] = new wxButton(this, 10000 + (y * buttonsX + x));
 			buttonSizer->Add(calcButtons[y * buttonsX + x], 1, wxEXPAND | wxALL);
+
+			//Need to bind the buttons to an event here
+			calcButtons[y * buttonsX + x]->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &mainFrame::OnButtonClicked, this);
 		}
 	}
 
@@ -63,6 +62,24 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 mainFrame::~mainFrame()
 {
 	
+}
+
+void mainFrame::OnButtonClicked(wxCommandEvent& click)
+{
+	
+
+	//Get Cord. of button in the field
+	int x = (click.GetId() - 10000) % buttonsX;
+	int y = (click.GetId() - 10000) / buttonsX;
+
+	calcText = calcText + calcButtons[y * buttonsX + x]->GetLabelText();
+	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonsX + x]->GetLabelText() + ")"); //Used for testing
+	
+	//I need to update the textBox to show the new calc text
+	textBox->AppendText(calcButtons[y * buttonsX + x]->GetLabelText());
+
+	//Need to handel the following
+	click.Skip();
 }
 
 
