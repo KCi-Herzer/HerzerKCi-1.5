@@ -61,7 +61,7 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 
 mainFrame::~mainFrame()
 {
-	
+	//TODO: Clean memory leaks
 }
 
 void mainFrame::OnButtonClicked(wxCommandEvent& click)
