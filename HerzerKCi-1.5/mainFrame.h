@@ -8,11 +8,13 @@ public:
 	mainFrame();
 	~mainFrame();
 	wxTextCtrl* textBox = nullptr;
-	wxButton** calcButtons;
-	int buttonsX = 4;
-	int buttonsY = 6;
 	std::string calcText = "";
+
+	//tomove to fac
+	/*wxButton** calcButtons;
+	int buttonSizerRows = 4;
+	int buttonSizerCols = 6;*/
 	
-	void OnButtonClicked(wxCommandEvent & click);
+	//void OnButtonClicked(wxCommandEvent & click);
 
 };
