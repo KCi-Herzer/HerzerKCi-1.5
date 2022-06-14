@@ -77,6 +77,8 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 	
 	//I need to update the textBox to show the new calc text
 	textBox->AppendText(calcButtons[y * buttonsX + x]->GetLabelText());
+
+	//Need to handel the following
 	click.Skip();
 }
 
