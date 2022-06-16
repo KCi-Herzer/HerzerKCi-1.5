@@ -2,6 +2,7 @@
 #include <string>
 #include "ButtonFactory.h"
 
+
 mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 240), wxSize(540, 495))
 {
 #pragma region TEXT BOX
@@ -12,8 +13,8 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 	//TODO: Make text size dinamic based on how much text is in the box
 	//TODO: Make text align to the right of the box
 #pragma endregion
-
-	ButtonFactory* buttonFactory = new ButtonFactory();
+	
+	buttonFactory = new ButtonFactory();
 	buttonFactory->CreateButtons(this);
 
 #pragma region Sizers
@@ -30,6 +31,7 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 mainFrame::~mainFrame()
 {
 	//TODO: Clean memory leaks
+	
 }
 
 //void mainFrame::OnButtonClicked(wxCommandEvent& click)

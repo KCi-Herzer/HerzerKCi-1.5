@@ -8,6 +8,8 @@ ButtonFactory::ButtonFactory()
 
 ButtonFactory::~ButtonFactory()
 {
+	//delete[] calcButtons;
+	//delete buttonSizer;
 }
 
 void ButtonFactory::CreateButtons(mainFrame* _parent)
