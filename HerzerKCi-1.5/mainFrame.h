@@ -14,6 +14,6 @@ public:
 	ButtonFactory* buttonFactory;
 	
 	
-	//void OnButtonClicked(wxCommandEvent & click);
+	void OnButtonClicked(wxCommandEvent & click);
 
 };

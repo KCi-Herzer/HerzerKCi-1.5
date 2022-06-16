@@ -30,28 +30,26 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 
 mainFrame::~mainFrame()
 {
-	//TODO: Clean memory leaks
 	delete buttonFactory;
-	
 }
 
-//void mainFrame::OnButtonClicked(wxCommandEvent& click)
-//{
-//	
-//
-//	//Get Cord. of button in the field
-//	int x = (click.GetId() - 10000) % buttonSizerRows;
-//	int y = (click.GetId() - 10000) / buttonSizerRows;
-//
-//	calcText = calcText + calcButtons[y * buttonSizerRows + x]->GetLabelText();
-//	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonSizerRows + x]->GetLabelText() + ")"); //Used for testing
-//	
-//	//I need to update the textBox to show the new calc text
-//	textBox->AppendText(calcButtons[y * buttonSizerRows + x]->GetLabelText());
-//
-//	//Need to handel the following
-//	click.Skip();
-//}
+void mainFrame::OnButtonClicked(wxCommandEvent& click)
+{
+	
+
+	//Get Cord. of button in the field
+	int x = (click.GetId() - 10000) % buttonFactory->buttonSizerRows;
+	int y = (click.GetId() - 10000) / buttonFactory->buttonSizerRows;
+
+	calcText = calcText + buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText();
+	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonSizerRows + x]->GetLabelText() + ")"); //Used for testing
+	
+	//I need to update the textBox to show the new calc text
+	textBox->AppendText(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText());
+
+	//Need to handel the following
+	click.Skip();
+}
 
 
 

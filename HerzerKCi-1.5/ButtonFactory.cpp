@@ -21,8 +21,8 @@ void ButtonFactory::CreateButtons(mainFrame* _parent)
 			calcButtons[y * buttonSizerRows + x] = new wxButton(_parent, 10000 + (y * buttonSizerRows + x));
 			buttonSizer->Add(calcButtons[y * buttonSizerRows + x], 1, wxEXPAND | wxALL);
 
-			//Need to bind the buttons to an event here
-			//calcButtons[y * buttonSizerRows + x]->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &mainFrame::OnButtonClicked, this);
+			//Binding the buttons to the click event on the mainFrame.
+			calcButtons[y * buttonSizerRows + x]->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &mainFrame::OnButtonClicked, _parent);
 		}
 	}
 
