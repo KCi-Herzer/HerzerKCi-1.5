@@ -1,17 +1,18 @@
 #pragma once
-#include "wx/wx.h".
+#include "wx/wx.h"
 #include "string"
 
+class ButtonFactory; //This is a forward declaration
 class mainFrame : public wxFrame
 {
 public:
+	
 	mainFrame();
 	~mainFrame();
 	wxTextCtrl* textBox = nullptr;
-	wxButton** calcButtons;
-	int buttonsX = 4;
-	int buttonsY = 6;
 	std::string calcText = "";
+	ButtonFactory* buttonFactory;
+	
 	
 	void OnButtonClicked(wxCommandEvent & click);
 
