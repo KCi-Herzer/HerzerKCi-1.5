@@ -1,8 +1,10 @@
 #include "mainFrame.h"
 #include <string>
 #include "ButtonFactory.h"
+#include "CalculatorProcessor.h"
+#include <sstream>
 
-
+int ConvertToIntiger(wxString _toConvert);
 mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 240), wxSize(540, 495))
 {
 #pragma region TEXT BOX
@@ -26,6 +28,8 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 	this->SetSizer(calcSizer);
 	calcSizer->Layout();
 #pragma endregion
+
+	
 }
 
 mainFrame::~mainFrame()
@@ -35,21 +39,78 @@ mainFrame::~mainFrame()
 
 void mainFrame::OnButtonClicked(wxCommandEvent& click)
 {
-	
+	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 
 	//Get Cord. of button in the field
 	int x = (click.GetId() - 10000) % buttonFactory->buttonSizerRows;
 	int y = (click.GetId() - 10000) / buttonFactory->buttonSizerRows;
 
-	calcText = calcText + buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText();
-	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonSizerRows + x]->GetLabelText() + ")"); //Used for testing
-	
-	//I need to update the textBox to show the new calc text
+#pragma region Updating the TextBox
+	//calcText = calcText + buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText();
+	calcText = calcText + std::to_string(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId());
+
+	//Update the textBox
 	textBox->AppendText(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText());
+	
+	//textBox->AppendText(std::to_string(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId())); //Gets the ID of the button //Used for testing
+	//wxString lable = buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText(); //Used for testing
+	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonSizerRows + x]->GetLabelText() + ")"); //Used for testing
+#pragma endregion
+
+#pragma region Using the Processor to do math things
+	//make the baseNumber
+	//TODO: ensure that a number was pressed
+	if (buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId() == 10018) //If "+" was clicked
+	{
+		//processor->Add()
+		firstNumber = textBaseNumber;
+		textBaseNumber = 0;
+	}
+	else if (buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId() == 10023) //If "=" was clicked
+	{
+		textBaseNumber = firstNumber + textBaseNumber;
+		textBox->AppendText(std::to_string(textBaseNumber));
+	}
+	else //store the numbers inside the processor
+	{
+		textBaseNumber = (textBaseNumber * 10) + ConvertToIntiger(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText());
+		//processor->SetBaseNumber(ConvertToIntiger(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText()));
+	}
+
+	
+	//->AppendText(std::to_string(textBaseNumber)); //Used for testing
+
+#pragma endregion
+
+	
+
+	
+
+	
+	
+	
+	
 
 	//Need to handel the following
 	click.Skip();
 }
+
+#pragma region Other Functions
+int ConvertToIntiger(wxString _toConvert)
+{
+	int number = 0;
+	std::stringstream ss;
+	if (ss << _toConvert)
+	{
+		if (ss >> number)
+		{
+			
+		}
+	}
+	return number;
+}
+
+#pragma endregion
 
 
 
