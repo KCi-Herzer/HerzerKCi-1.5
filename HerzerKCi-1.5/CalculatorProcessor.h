@@ -42,41 +42,76 @@ public:
 
 	std::string DoMath() //Maybe I could pass in the Id
 	{
-		
+		//TODO: make the numbers doubles so we can have decimals
 		switch (operationId)
 		{
 		case 12:
 			Add();
+			break;
 		case 13:
-			//"-"
+			Subtract();
+			break;
 		case 14:
-			//"*"
+			Multiply();
+			break;
 		case 15:
-			//"/"
+			Divide();
+			break;
 		case 16:
-			//"mod"
+			Mod();
+			break;
 		case 17:
 			//"hex"
+			break;
 		case 18:
 			//"C"
+			break;
 		case 19:
 			//"-/+"
+			break;
 		case 20:
 			//"bin"
+			break;
 		case 21:
 			//"dec"
+			break;
 		case 23:
 			//"="
+			break;
 		default:
 			break;
 		}
 		return std::to_string(baseNumber);
 	}
 	
-	void Add() 
+#pragma region Two number Operators
+	void Add()
 	{
 		baseNumber = firstNumber + baseNumber;
 	}
+
+	void Subtract()
+	{
+		baseNumber = firstNumber - baseNumber;
+	}
+
+	void Multiply()
+	{
+		baseNumber = firstNumber * baseNumber;
+	}
+
+	void Divide()
+	{
+		baseNumber = firstNumber / baseNumber;
+	}
+
+	void Mod()
+	{
+		baseNumber = firstNumber % baseNumber;
+	}
+#pragma endregion
+
+#pragma region Single number Operators
 
 	std::string GetDecimal()
 	{
@@ -143,6 +178,10 @@ public:
 
 		return result;
 	}
+#pragma endregion
+
+
+	
 };
 
 CalculatorProcessor* CalculatorProcessor::_processor = nullptr;
