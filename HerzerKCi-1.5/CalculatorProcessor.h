@@ -52,7 +52,7 @@ public:
 
 	std::string DoMath()
 	{
-		//TODO: make the numbers doubles so we can have decimals
+		//TODO: add decimal percision to remove trailing 0's
 		
 		switch (operationId)
 		{
