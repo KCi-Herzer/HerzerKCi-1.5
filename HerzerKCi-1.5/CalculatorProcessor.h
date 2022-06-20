@@ -8,8 +8,8 @@ class CalculatorProcessor
 private:
 	CalculatorProcessor() {}
 	static CalculatorProcessor* _processor;
-	double firstNumber = 0;
-	double baseNumber = 0;
+	int firstNumber = 0;
+	int baseNumber = 0;
 	int operationId = 0;
 	std::string mathResult;
 	
@@ -118,7 +118,7 @@ public:
 
 	void Mod()
 	{
-		baseNumber = std::fmod(firstNumber, baseNumber);
+		baseNumber = firstNumber % baseNumber;
 		mathResult = std::to_string(baseNumber);
 	}
 #pragma endregion
