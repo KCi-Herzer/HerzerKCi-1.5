@@ -13,7 +13,6 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 	wxFont font(48, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
 	textBox->SetFont(font);
 	//TODO: Make text size dinamic based on how much text is in the box
-	//TODO: Make text align to the right of the box
 #pragma endregion
 	
 	buttonFactory = new ButtonFactory();
@@ -41,8 +40,6 @@ mainFrame::~mainFrame()
 
 void mainFrame::OnButtonClicked(wxCommandEvent& click)
 {
-	
-	//CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 	//Get Cord. of button in the field
 	int x = (click.GetId() - 10000) % buttonFactory->buttonSizerRows;
 	int y = (click.GetId() - 10000) / buttonFactory->buttonSizerRows;
@@ -50,33 +47,22 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 	std::string result = "";
 
 #pragma region Updating the TextBox
-	//calcText = calcText + buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText();
-	//calcText = calcText + std::to_string(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId());
 
 	//Update the textBox
 	textBox->AppendText(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText());
 	
 	//textBox->AppendText(std::to_string(buttonID)); //Gets the ID of the button //Used for testing
-	//wxString lable = buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText(); //Used for testing
 	//wxMessageBox("Button Clicked (" + calcButtons[y * buttonSizerRows + x]->GetLabelText() + ")"); //Used for testing
 #pragma endregion
 
 #pragma region Using the Processor to do math things
-	//make the baseNumber
-	//TODO: ensure that a number was pressed
-
-	/// <summary>
-	/// So if any number was pressed I update the baseNumber, if I press an operator I store the first number then when I click "=" i make the math happen.
-	/// Everytime we call Do math it will return text to be printed.
-	/// </summary>
-	/// <param name="click"></param>
 	
 	if (buttonID == 12 || buttonID == 13 || buttonID == 14 || buttonID == 15 || buttonID == 16) //Operations that need to take a second number, i.e. 2+2.
 	{
 		processor->SetFirstNumber();
 		processor->SetOperationId(buttonID);
 	}
-	else if (buttonID == 17 || buttonID == 19 || buttonID == 20 || buttonID == 21) //Operations that dont need to take a second number, i.e. 52hex.
+	else if (buttonID == 17 || buttonID == 19 || buttonID == 20 || buttonID == 21) //Operations that don't take a second number, i.e. 52(hex).
 	{
 		processor->SetOperationId(buttonID);
 		result = processor->DoMath();
@@ -87,7 +73,7 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 		textBox->Clear();
 		processor->ResetProcessor();
 	}
-	else if (buttonID == 23) //The equals button. Do math for the 2 number operations
+	else if (buttonID == 23) //The equals button. Do math for the 2 number operations.
 	{
 		result = processor->DoMath();
 		textBox->AppendText(result);
@@ -121,10 +107,9 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 
 #pragma endregion
 
-	//Need to handel the following
+	//Need to handle the following
 	click.Skip();
 }
-
 
 
 #pragma region Other Functions

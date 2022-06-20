@@ -50,7 +50,7 @@ public:
 	CalculatorProcessor(CalculatorProcessor& other) = delete; //Makes it so we can't call the copy constructor
 	void operator = (const CalculatorProcessor& other) = delete;
 
-	std::string DoMath() //Maybe I could pass in the Id
+	std::string DoMath()
 	{
 		//TODO: make the numbers doubles so we can have decimals
 		
