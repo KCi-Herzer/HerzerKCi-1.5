@@ -28,6 +28,14 @@ public:
 		baseNumber = (baseNumber * 10) + _numToAdd;
 	}
 
+	void ResetProcessor() 
+	{
+		baseNumber = 0;
+		firstNumber = 0;
+		operationId = 0;
+		mathResult = "";
+	}
+
 	void SetFirstNumber() 
 	{
 		firstNumber = baseNumber;
@@ -84,6 +92,7 @@ public:
 		default:
 			break;
 		}
+		operationId = 0;
 		return mathResult;
 	}
 	

@@ -18,6 +18,7 @@ mainFrame::mainFrame() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(560, 2
 	
 	buttonFactory = new ButtonFactory();
 	buttonFactory->CreateButtons(this);
+	processor = CalculatorProcessor::GetInstance();
 
 #pragma region Sizers
 	wxFlexGridSizer* calcSizer = new wxFlexGridSizer(1);
@@ -40,7 +41,7 @@ mainFrame::~mainFrame()
 
 void mainFrame::OnButtonClicked(wxCommandEvent& click)
 {
-	processor = CalculatorProcessor::GetInstance();
+	
 	//CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 	//Get Cord. of button in the field
 	int x = (click.GetId() - 10000) % buttonFactory->buttonSizerRows;
@@ -75,11 +76,16 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 		processor->SetFirstNumber();
 		processor->SetOperationId(buttonID);
 	}
-	else if (buttonID == 17 || buttonID == 18 || buttonID == 19 || buttonID == 20 || buttonID == 21) //Operations that dont need to take a second number, i.e. 52hex.
+	else if (buttonID == 17 || buttonID == 19 || buttonID == 20 || buttonID == 21) //Operations that dont need to take a second number, i.e. 52hex.
 	{
 		processor->SetOperationId(buttonID);
 		result = processor->DoMath();
 		textBox->AppendText(result);
+	}
+	else if (buttonID == 18) //Clear
+	{
+		textBox->Clear();
+		processor->ResetProcessor();
 	}
 	else if (buttonID == 23) //The equals button. Do math for the 2 number operations
 	{
