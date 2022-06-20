@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <bitset>
 #include "mainFrame.h"
 
 class CalculatorProcessor
@@ -10,6 +11,7 @@ private:
 	int firstNumber = 0;
 	int baseNumber = 0;
 	int operationId = 0;
+	std::string mathResult;
 	
 public:
 	static CalculatorProcessor* GetInstance() //Most important part of a singleton
@@ -43,6 +45,7 @@ public:
 	std::string DoMath() //Maybe I could pass in the Id
 	{
 		//TODO: make the numbers doubles so we can have decimals
+		
 		switch (operationId)
 		{
 		case 12:
@@ -61,7 +64,7 @@ public:
 			Mod();
 			break;
 		case 17:
-			//"hex"
+			GetHexadecimal();
 			break;
 		case 18:
 			//"C"
@@ -70,10 +73,10 @@ public:
 			//"-/+"
 			break;
 		case 20:
-			//"bin"
+			GetBinary();
 			break;
 		case 21:
-			//"dec"
+			GetDecimal();
 			break;
 		case 23:
 			//"="
@@ -81,44 +84,49 @@ public:
 		default:
 			break;
 		}
-		return std::to_string(baseNumber);
+		return mathResult;
 	}
 	
 #pragma region Two number Operators
 	void Add()
 	{
 		baseNumber = firstNumber + baseNumber;
+		mathResult = std::to_string(baseNumber);
 	}
 
 	void Subtract()
 	{
 		baseNumber = firstNumber - baseNumber;
+		mathResult = std::to_string(baseNumber);
 	}
 
 	void Multiply()
 	{
 		baseNumber = firstNumber * baseNumber;
+		mathResult = std::to_string(baseNumber);
 	}
 
 	void Divide()
 	{
 		baseNumber = firstNumber / baseNumber;
+		mathResult = std::to_string(baseNumber);
 	}
 
 	void Mod()
 	{
 		baseNumber = firstNumber % baseNumber;
+		mathResult = std::to_string(baseNumber);
 	}
 #pragma endregion
 
 #pragma region Single number Operators
 
-	std::string GetDecimal()
+	void GetDecimal()
 	{
-		return std::to_string(baseNumber);
+		mathResult = " = " + std::to_string(baseNumber);
 	}
 
-	std::string GetHexadecimal()
+	void GetHexadecimal()
 	{
 		std::string result = "";
 		int number = baseNumber;
@@ -156,27 +164,13 @@ public:
 			number = number / 16;
 		}
 		result = "0x" + result;
-		return result;
+		mathResult = " = " + result;
 	}
 
-	std::string GetBinary()
+	void GetBinary()
 	{
-		std::string result = "";
-		int number = baseNumber;
-		for (int i = 0; i < 32; i++)
-		{
-			if (baseNumber % 2 == 0)
-			{
-				result = "0" + result;
-			}
-			else
-			{
-				result = "1" + result;
-			}
-			number = number / 2;
-		}
-
-		return result;
+		std::string result = std::bitset< 32 >(baseNumber).to_string();
+		mathResult = " = " + result;
 	}
 #pragma endregion
 
