@@ -74,11 +74,8 @@ public:
 		case 17:
 			GetHexadecimal();
 			break;
-		case 18:
-			//"C"
-			break;
 		case 19:
-			//"-/+"
+			Invert();
 			break;
 		case 20:
 			GetBinary();
@@ -86,10 +83,8 @@ public:
 		case 21:
 			GetDecimal();
 			break;
-		case 23:
-			//"="
-			break;
 		default:
+			mathResult = std::to_string(baseNumber);
 			break;
 		}
 		operationId = 0;
@@ -181,6 +176,13 @@ public:
 		std::string result = std::bitset< 32 >(baseNumber).to_string();
 		mathResult = " = " + result;
 	}
+
+	void Invert() 
+	{
+		baseNumber = -baseNumber;
+		mathResult = " = " + std::to_string(baseNumber);
+	}
+
 #pragma endregion
 
 
