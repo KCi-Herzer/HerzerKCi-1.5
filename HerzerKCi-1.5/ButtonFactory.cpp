@@ -33,7 +33,7 @@ void ButtonFactory::CreateButtons(mainFrame* _parent)
 
 	//Assigning lables to buttons
 	std::vector <std::string> lables = { "7", "4", "1", "", "8", "5", "2", "0", "9", "6", "3", "", 
-		"C", "-/+", "*", "/", "mod", "hex", "+", "-", "bin", "dec",  "", "=" };
+		"+", "-", "*", "/", "mod", "hex", "C", "+/-", "bin", "dec",  "", "=" };
 	for (int i = 0; i < 24; i++)
 	{
 		calcButtons[i]->SetLabel(lables[i]);

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "mainFrame.h"
 
 class CalculatorProcessor
 {
@@ -8,6 +9,7 @@ private:
 	static CalculatorProcessor* _processor;
 	int firstNumber = 0;
 	int baseNumber = 0;
+	int operationId = 0;
 	
 public:
 	static CalculatorProcessor* GetInstance() //Most important part of a singleton
@@ -21,16 +23,59 @@ public:
 
 	void SetBaseNumber(int _numToAdd)
 	{
-		baseNumber = _numToAdd;
+		baseNumber = (baseNumber * 10) + _numToAdd;
+	}
+
+	void SetFirstNumber() 
+	{
+		firstNumber = baseNumber;
+		baseNumber = 0;
+	}
+
+	void SetOperationId(int _operationId) 
+	{
+		operationId = _operationId;
 	}
 
 	CalculatorProcessor(CalculatorProcessor& other) = delete; //Makes it so we can't call the copy constructor
 	void operator = (const CalculatorProcessor& other) = delete;
-	
-	std::string Add(int _secondNumber) 
+
+	std::string DoMath() //Maybe I could pass in the Id
 	{
-		baseNumber = baseNumber + _secondNumber;
+		
+		switch (operationId)
+		{
+		case 12:
+			Add();
+		case 13:
+			//"-"
+		case 14:
+			//"*"
+		case 15:
+			//"/"
+		case 16:
+			//"mod"
+		case 17:
+			//"hex"
+		case 18:
+			//"C"
+		case 19:
+			//"-/+"
+		case 20:
+			//"bin"
+		case 21:
+			//"dec"
+		case 23:
+			//"="
+		default:
+			break;
+		}
 		return std::to_string(baseNumber);
+	}
+	
+	void Add() 
+	{
+		baseNumber = firstNumber + baseNumber;
 	}
 
 	std::string GetDecimal()
