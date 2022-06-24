@@ -30,6 +30,9 @@
     <ClCompile Include="..\HerzerKCi-1.5\mainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\HerzerKCi-1.5\CalculatorProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

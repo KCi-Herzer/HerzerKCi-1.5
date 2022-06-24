@@ -71,5 +71,8 @@
     <ClCompile Include="ButtonFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CalculatorProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

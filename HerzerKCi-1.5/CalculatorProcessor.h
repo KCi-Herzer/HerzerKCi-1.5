@@ -128,4 +128,3 @@ public:
 
 };
 
-CalculatorProcessor* CalculatorProcessor::_processor = nullptr;

@@ -10,14 +10,14 @@ namespace HerzerKCi15Tests
 	TEST_CLASS(CalculatorProcessorTests)
 	{
 	public:
-		
+		CalculatorProcessor* testProcessor = CalculatorProcessor::GetInstance();
 		TEST_METHOD(EsureSetBaseNumber)
 		{
-			/*testProcessor->SetBaseNumber(4);
+			testProcessor->SetBaseNumber(4);
 			testProcessor->SetBaseNumber(5);
 			std::string testString = "45";
 			testProcessor->SetOperationId(0);
-			Assert::AreEqual(testString, testProcessor->DoMath());*/
+			Assert::AreEqual(testString, testProcessor->DoMath());
 		}
 		TEST_METHOD(TestMethod2)
 		{
