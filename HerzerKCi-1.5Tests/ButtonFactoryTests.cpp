@@ -1,13 +1,15 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../HerzerKCi-1.5/ButtonFactory.h"
 #include "../HerzerKCi-1.5/mainFrame.h"
 #include "../HerzerKCi-1.5/mainFrame.cpp"
+#include "../HerzerKCi-1.5/ButtonFactory.h"
 #include "../HerzerKCi-1.5/ButtonFactory.cpp"
 
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
+
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+class mainFrame;
 namespace HerzerKCi15Tests
 {
 	TEST_CLASS(ButtonFactoryTests)

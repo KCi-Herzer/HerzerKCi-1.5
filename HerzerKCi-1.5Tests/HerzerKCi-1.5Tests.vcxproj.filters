@@ -24,9 +24,15 @@
     <ClCompile Include="ButtonFactoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\HerzerKCi-1.5\ButtonFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HerzerKCi-1.5\ButtonFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
