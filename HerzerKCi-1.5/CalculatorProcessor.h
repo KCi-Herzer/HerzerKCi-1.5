@@ -5,13 +5,21 @@
 #include "mainFrame.h"
 #include "IBaseCommand.h"
 #include "Add.h"
+#include "Subtract.h"
+#include "Multiply.h"
+#include "Divide.h"
+#include "Mod.h"
 
 class CalculatorProcessor
 {
 private:
 	CalculatorProcessor() 
 	{
-		commands.push_back(&a);
+		commands.push_back(&add);
+		commands.push_back(&sub);
+		commands.push_back(&mult);
+		commands.push_back(&div);
+		commands.push_back(&mod);
 	}
 	static CalculatorProcessor* _processor;
 	double firstNumber = 0;
@@ -19,7 +27,11 @@ private:
 	int operationId = 0;
 	std::string mathResult;
 	std::vector<IBaseCommand*> commands;
-	Add a;
+	Add add;
+	Subtract sub;
+	Multiply mult;
+	Divide div;
+	Mod mod;
 	
 	
 	
@@ -67,19 +79,19 @@ public:
 		switch (operationId)
 		{
 		case 12:
-			commands[0]->Execute(baseNumber, firstNumber, mathResult);
+			commands[0]->Execute(baseNumber, firstNumber, mathResult); //Add
 			break;
 		case 13:
-			Subtract();
+			commands[1]->Execute(baseNumber, firstNumber, mathResult); //Subtract
 			break;
 		case 14:
-			Multiply();
+			commands[2]->Execute(baseNumber, firstNumber, mathResult); //Multiply
 			break;
 		case 15:
-			Divide();
+			commands[3]->Execute(baseNumber, firstNumber, mathResult); //Divide
 			break;
 		case 16:
-			Mod();
+			commands[4]->Execute(baseNumber, firstNumber, mathResult); //Mod
 			break;
 		case 17:
 			GetHexadecimal();
@@ -101,37 +113,6 @@ public:
 		return mathResult;
 	}
 	
-#pragma region Two number Operators
-	/*void Add()
-	{
-		baseNumber = firstNumber + baseNumber;
-		mathResult = std::to_string(baseNumber);
-	}*/
-
-	void Subtract()
-	{
-		baseNumber = firstNumber - baseNumber;
-		mathResult = std::to_string(baseNumber);
-	}
-
-	void Multiply()
-	{
-		baseNumber = firstNumber * baseNumber;
-		mathResult = std::to_string(baseNumber);
-	}
-
-	void Divide()
-	{
-		baseNumber = firstNumber / baseNumber;
-		mathResult = std::to_string(baseNumber);
-	}
-
-	void Mod()
-	{
-		baseNumber = std::fmod(firstNumber, baseNumber);
-		mathResult = std::to_string(baseNumber);
-	}
-#pragma endregion
 
 #pragma region Single number Operators
 

@@ -23,8 +23,13 @@
     <ClInclude Include="ButtonFactory.h" />
     <ClInclude Include="CalculatorApp.h" />
     <ClInclude Include="CalculatorProcessor.h" />
+    <ClInclude Include="Divide.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="IBaseCommand.h" />
     <ClInclude Include="mainFrame.h" />
+    <ClInclude Include="Mod.h" />
+    <ClInclude Include="Multiply.h" />
+    <ClInclude Include="Subtract.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ButtonFactory.cpp" />

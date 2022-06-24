@@ -1,12 +1,13 @@
 #pragma once
 #include "IBaseCommand.h"
+#include <cmath>
 
-class Add : public IBaseCommand 
+class Mod : public IBaseCommand
 {
 public:
 	void Command(double& baseNumber, double& firstNumber, std::string& mathResult)
 	{
-		baseNumber = firstNumber + baseNumber;
+		baseNumber = std::fmod(firstNumber, baseNumber);
 		mathResult = std::to_string(baseNumber);
 	}
 	void Execute(double& _baseNumber, double& _firstNumber, std::string& _mathResult)
