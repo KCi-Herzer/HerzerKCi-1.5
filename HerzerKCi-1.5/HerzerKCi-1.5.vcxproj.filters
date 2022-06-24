@@ -48,18 +48,6 @@
     <ClInclude Include="Mod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GetHexadecimal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Invert.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GetBinary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GetDecimal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp">
