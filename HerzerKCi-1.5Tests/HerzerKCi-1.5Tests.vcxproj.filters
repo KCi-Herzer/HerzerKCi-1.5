@@ -15,24 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ButtonFactoryTests.cpp">
+    <ClCompile Include="HerzerKCi-1.5Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HerzerKCi-1.5\ButtonFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CalculatorProcessorTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\HerzerKCi-1.5\ButtonFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
