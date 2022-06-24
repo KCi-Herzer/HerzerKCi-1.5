@@ -5,7 +5,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace HerzerKCi15Tests
 {
-	TEST_CLASS(HerzerKCi15Tests)
+	TEST_CLASS(CalculatorProcessorTests)
 	{
 	public:
 		
