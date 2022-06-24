@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <bitset>
 #include <vector>
 #include "mainFrame.h"
 #include "IBaseCommand.h"
@@ -9,32 +8,46 @@
 #include "Multiply.h"
 #include "Divide.h"
 #include "Mod.h"
+#include "GetHexadecimal.h"
+#include "Invert.h"
+#include "GetBinary.h"
+#include "GetDecimal.h"
+
 
 class CalculatorProcessor
 {
 private:
-	CalculatorProcessor() 
+	CalculatorProcessor()
 	{
 		commands.push_back(&add);
 		commands.push_back(&sub);
 		commands.push_back(&mult);
 		commands.push_back(&div);
 		commands.push_back(&mod);
+		commands.push_back(&hex);
+		commands.push_back(&inv);
+		commands.push_back(&bin);
+		commands.push_back(&dec);
 	}
 	static CalculatorProcessor* _processor;
 	double firstNumber = 0;
 	double baseNumber = 0;
 	int operationId = 0;
 	std::string mathResult;
+
+#pragma region Commands
 	std::vector<IBaseCommand*> commands;
 	Add add;
 	Subtract sub;
 	Multiply mult;
 	Divide div;
 	Mod mod;
-	
-	
-	
+	GetHexadecimal hex;
+	Invert inv;
+	GetBinary bin;
+	GetDecimal dec;
+#pragma endregion
+
 public:
 	static CalculatorProcessor* GetInstance() //Most important part of a singleton
 	{
@@ -50,7 +63,7 @@ public:
 		baseNumber = (baseNumber * 10) + _numToAdd;
 	}
 
-	void ResetProcessor() 
+	void ResetProcessor()
 	{
 		baseNumber = 0;
 		firstNumber = 0;
@@ -58,13 +71,13 @@ public:
 		mathResult = "";
 	}
 
-	void SetFirstNumber() 
+	void SetFirstNumber()
 	{
 		firstNumber = baseNumber;
 		baseNumber = 0;
 	}
 
-	void SetOperationId(int _operationId) 
+	void SetOperationId(int _operationId)
 	{
 		operationId = _operationId;
 	}
@@ -75,7 +88,7 @@ public:
 	std::string DoMath()
 	{
 		//TODO: add decimal percision to remove trailing 0's
-		
+
 		switch (operationId)
 		{
 		case 12:
@@ -94,16 +107,16 @@ public:
 			commands[4]->Execute(baseNumber, firstNumber, mathResult); //Mod
 			break;
 		case 17:
-			GetHexadecimal();
+			commands[5]->Execute(baseNumber, firstNumber, mathResult); //Hex
 			break;
 		case 19:
-			Invert();
+			commands[6]->Execute(baseNumber, firstNumber, mathResult); //Invert
 			break;
 		case 20:
-			GetBinary();
+			commands[7]->Execute(baseNumber, firstNumber, mathResult); //Bin
 			break;
 		case 21:
-			GetDecimal();
+			commands[8]->Execute(baseNumber, firstNumber, mathResult); //Dec
 			break;
 		default:
 			mathResult = std::to_string(baseNumber);
@@ -112,73 +125,7 @@ public:
 		operationId = 0;
 		return mathResult;
 	}
-	
 
-#pragma region Single number Operators
-
-	void GetDecimal()
-	{
-		mathResult = " = " + std::to_string(baseNumber);
-	}
-
-	void GetHexadecimal()
-	{
-		std::string result = "";
-		int number = baseNumber;
-		while (number > 0)
-		{
-			int mod = number % 16;
-			if (mod < 10)
-			{
-				result = std::to_string(mod) + result;
-			}
-			else if (mod == 10)
-			{
-				result = "A" + result;
-			}
-			else if (mod == 11)
-			{
-				result = "B" + result;
-			}
-			else if (mod == 12)
-			{
-				result = "C" + result;
-			}
-			else if (mod == 13)
-			{
-				result = "D" + result;
-			}
-			else if (mod == 14)
-			{
-				result = "E" + result;
-			}
-			else if (mod == 15)
-			{
-				result = "F" + result;
-			}
-			number = number / 16;
-		}
-		result = "0x" + result;
-		mathResult = " = " + result;
-	}
-
-	void GetBinary()
-	{
-		std::string result = std::bitset< 32 >(baseNumber).to_string();
-		mathResult = " = " + result;
-	}
-
-	void Invert() 
-	{
-		baseNumber = -baseNumber;
-		mathResult = " = " + std::to_string(baseNumber);
-	}
-
-#pragma endregion
-
-
-	
 };
 
 CalculatorProcessor* CalculatorProcessor::_processor = nullptr;
-
