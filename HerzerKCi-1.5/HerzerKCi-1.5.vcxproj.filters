@@ -27,6 +27,39 @@
     <ClInclude Include="CalculatorProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IBaseCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Subtract.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiply.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Divide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetHexadecimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Invert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetBinary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetDecimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp">
