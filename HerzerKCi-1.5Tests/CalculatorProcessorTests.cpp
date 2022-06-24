@@ -11,6 +11,7 @@ namespace HerzerKCi15Tests
 		
 		TEST_METHOD(TestMethod1)
 		{
+
 		}
 	};
 }
