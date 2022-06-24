@@ -83,28 +83,6 @@ void mainFrame::OnButtonClicked(wxCommandEvent& click)
 		processor->SetBaseNumber(ConvertToIntiger(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText()));
 	}
 	
-#pragma region Old Implementation
-	//if (buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId() == 10018) //If "+" was clicked
-	//{
-	//	processor->SetFirstNumber();
-	//	//firstNumber = textBaseNumber; //old implementation
-	//	//textBaseNumber = 0; //old implementation
-	//}
-	//else if (buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetId() == 10023) //If "=" was clicked
-	//{
-	//	textBaseNumber = firstNumber + textBaseNumber;
-	//	textBox->AppendText(std::to_string(textBaseNumber));
-	//}
-	//else //store the numbers inside the processor
-	//{
-	//	//textBaseNumber = (textBaseNumber * 10) + ConvertToIntiger(buttonFactory->calcButtons[y * buttonFactory->buttonSizerRows + x]->GetLabelText()); //old implementation
-
-	//}
-
-
-	//->AppendText(std::to_string(textBaseNumber)); //Used for testing
-#pragma endregion
-
 #pragma endregion
 
 	//Need to handle the following
