@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <bitset>
+#include <vector>
 #include "mainFrame.h"
+#include "IBaseCommand.h"
 
 class CalculatorProcessor
 {
@@ -12,6 +14,7 @@ private:
 	double baseNumber = 0;
 	int operationId = 0;
 	std::string mathResult;
+	std::vector<IBaseCommand*> commands;
 	
 public:
 	static CalculatorProcessor* GetInstance() //Most important part of a singleton
