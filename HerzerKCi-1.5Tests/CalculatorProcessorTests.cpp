@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include <string>
-#include "../HerzerKCi-1.5/mainFrame.h"
+#include "../HerzerKCi-1.5/CalculatorProcessor.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
