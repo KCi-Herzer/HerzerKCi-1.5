@@ -4,17 +4,24 @@
 #include <vector>
 #include "mainFrame.h"
 #include "IBaseCommand.h"
+#include "Add.h"
 
 class CalculatorProcessor
 {
 private:
-	CalculatorProcessor() {}
+	CalculatorProcessor() 
+	{
+		commands.push_back(&a);
+	}
 	static CalculatorProcessor* _processor;
 	double firstNumber = 0;
 	double baseNumber = 0;
 	int operationId = 0;
 	std::string mathResult;
 	std::vector<IBaseCommand*> commands;
+	Add a;
+	
+	
 	
 public:
 	static CalculatorProcessor* GetInstance() //Most important part of a singleton
@@ -60,7 +67,7 @@ public:
 		switch (operationId)
 		{
 		case 12:
-			Add();
+			commands[0]->Execute(baseNumber, firstNumber, mathResult);
 			break;
 		case 13:
 			Subtract();
@@ -95,11 +102,11 @@ public:
 	}
 	
 #pragma region Two number Operators
-	void Add()
+	/*void Add()
 	{
 		baseNumber = firstNumber + baseNumber;
 		mathResult = std::to_string(baseNumber);
-	}
+	}*/
 
 	void Subtract()
 	{
