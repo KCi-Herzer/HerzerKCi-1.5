@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HerzerKCi-1.5", "HerzerKCi-1.5\HerzerKCi-1.5.vcxproj", "{E1F71973-08C1-4309-833C-2F94487EE880}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HerzerKCi-1.5Tests", "HerzerKCi-1.5Tests\HerzerKCi-1.5Tests.vcxproj", "{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{E1F71973-08C1-4309-833C-2F94487EE880}.Release|x64.Build.0 = Release|x64
 		{E1F71973-08C1-4309-833C-2F94487EE880}.Release|x86.ActiveCfg = Release|Win32
 		{E1F71973-08C1-4309-833C-2F94487EE880}.Release|x86.Build.0 = Release|Win32
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Debug|x64.ActiveCfg = Debug|x64
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Debug|x64.Build.0 = Debug|x64
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Debug|x86.ActiveCfg = Debug|Win32
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Debug|x86.Build.0 = Debug|Win32
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Release|x64.ActiveCfg = Release|x64
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Release|x64.Build.0 = Release|x64
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Release|x86.ActiveCfg = Release|Win32
+		{AD8E2D35-5BB6-4E31-B132-0B29A17950A6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
